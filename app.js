@@ -11,7 +11,12 @@ app.set("view engine", "pug");
 
 app.listen(PORT, console.log("server is up and running"));
 app.get("/", (req, res, next) => {
-  res.render("index");
+  let name = req.cookies.username;
+  if (name) {
+    res.render("index", { name });
+  } else {
+    res.redirect("/hello");
+  }
 });
 
 app.get("/hello", (req, res, next) => {
@@ -20,7 +25,7 @@ app.get("/hello", (req, res, next) => {
 
 app.post("/hello", (req, res, next) => {
   res.cookie("username", req.body.username);
-  res.render("hello", { name: req.body.username });
+  res.redirect("/");
 });
 
 app.get("/cards", (req, res, next) => {
