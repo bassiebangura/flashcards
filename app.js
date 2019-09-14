@@ -17,9 +17,9 @@ app.get("/", (req, res, next) => {
   res.render("index");
 });
 
-app.get("/table", (req, res, next) => {
-    res.render("table", {firstName: "Shabreya", lastName: "Bangura"});
-  });
+// app.get("/table", (req, res, next) => {
+//     res.render("table", {firstName: "Shabreya", lastName: "Bangura"});
+//   });
 
 app.get("/cards", (req, res, next) => {
   res.render("card", { prompt: "Who is buried in Grant's tomb.", hint:"Think whose tomb it might be", colors  });
