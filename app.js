@@ -10,41 +10,12 @@ app.use(cookieParser());
 
 app.set("view engine", "pug"); //set template engine for express server.
 
-//handles request to home URL
-app.get("/", (req, res, next) => {
-  let name = req.cookies.username;
-  if (name) {
-    res.render("index", { name });
-  } else {
-    res.redirect("/hello");
-  }
-});
+//import router
+const mainRoutes = require("./routes");
+const cardsRoutes = require("./routes/cards");
 
-//handles get request to URL: /hello
-app.get("/hello", (req, res, next) => {
-  res.render("hello", { name: req.cookies.username });
-});
-
-//handles submit name button.
-app.post("/hello", (req, res, next) => {
-  res.cookie("username", req.body.username);
-  res.redirect("/");
-});
-
-//handles goodbye button submit action
-app.post("/goodbye", (req, res, next) => {
-  res.clearCookie("username");
-  res.redirect("/hello");
-});
-
-//handles request to path: /cards
-app.get("/cards", (req, res, next) => {
-  res.render("card", {
-    prompt: "Who is buried in Grant's tomb.",
-    hint: "Think whose tomb it might be",
-    colors
-  });
-});
+app.use(mainRoutes);
+app.use('/cards', cardsRoutes);
 
 //error handling middle ware
 app.use((req, res, next) => {
