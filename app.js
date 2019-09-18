@@ -15,11 +15,11 @@ const mainRoutes = require("./routes");
 const cardsRoutes = require("./routes/cards");
 
 app.use(mainRoutes);
-app.use('/cards', cardsRoutes);
+app.use("/cards", cardsRoutes);
 
 //error handling middle ware
 app.use((req, res, next) => {
-  console.log("Hello");
+  //console.log("Hello");
   const err = new Error("Oh Noooo!!!");
   err.status = 500;
   next(err);

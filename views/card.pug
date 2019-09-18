@@ -1,11 +1,14 @@
-let urlPath = "Hello Everyone"
 extends layout.pug
 block content
     sections#content
         h2=text
-        p= hint
-         
-        a(href="/")=toggleAnswerAndQuestion
+        if hint
+            p
+                i Hint: #{hint}
+        a(href=`${id}?side=${sideToShow}`)= sideToShowDisplay
+        br
+        a(href="/cards") Next Card
+            
 
    
     
