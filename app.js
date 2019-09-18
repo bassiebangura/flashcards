@@ -16,6 +16,7 @@ const cardsRoutes = require("./routes/cards");
 
 app.use(mainRoutes);
 app.use("/cards", cardsRoutes);
+app.use('/static', express.static("public"))
 
 //error handling middle ware
 app.use((req, res, next) => {
