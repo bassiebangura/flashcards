@@ -9,13 +9,13 @@ block card
                 if hint
                     p.hint
                         i= hint
-                .card-flip-wrap
+                #card-flip-wrap
                     a(href=`${id}?side=${sideToShow}`)
                         img.card-flip(src='/static/img/flip.svg')
                 .card-next
                     a(href='/cards')
                         img(src='/static/img/next.svg')
-        script(src='static/js/app.js')       
+        //script(src='static/js/app.js')    'supplies needed js file for client side'   
         
 
        
