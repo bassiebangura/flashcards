@@ -1,6 +1,7 @@
 extends layout.pug
 block content
     sections#content
+        h2 Welcome, #{name}!
         h2=text
         if hint
             p
@@ -8,6 +9,9 @@ block content
         a(href=`${id}?side=${sideToShow}`)= sideToShowDisplay
         br
         a(href="/cards") Next Card
+
+        form(action='/goodbye' method='post')
+            button(type='submit') Goodbye!!
             
 
    
